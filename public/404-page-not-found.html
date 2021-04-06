@@ -3,10 +3,62 @@
   <head>
     <title>Pagina de prueba</title>
     <link rel="stylesheet" href="http://beta.adalab.es/resources/stylesheets/all.css" />
+    <style>
+      .page-nf{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+      .page-nf-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+        margin: 0 auto;
+        font-size: 1.7em;
+        line-height: 1.5;
+      }
+      .page-nf-img{
+        margin: 0 auto;
+        width: 50%;
+      }
+      .page-nf-btn{
+        width:20%;
+        margin: 50px auto 0;
+      }
+      .page-nf-btn:hover{
+        transform: scale(1.5);
+      }
+    @media all and (min-width: 768px){
+      .page-nf{
+        flex-direction: row;
+        padding: 0 30px;
+      }
+      .page-nf-content{
+        padding: 40px 20px;
+        font-size: 30px;
+        line-height: 1.5;
+      }
+      .page-nf-btn{
+        width:120px;
+        margin: 50px auto 0;
+      }
+    }
+    </style>
   </head>
-  <body class="page">
-    <main>
-      <h1>Lo siento. Esta página no existe.</h1>
+  <body class="body-pnf">
+    <main class="page-nf">
+      <img class="page-nf-img"src="./pnf_avocado.svg" alt="Avocado page not found image" />
+      <div class="page-nf-content">
+        <h1>404</h1>
+        <p>UH OH! You're lost.</p>
+        <p>The page you are looking for does not exist. But you can click the emergency button below to run back to the homepage.</p>
+        <a href="./index.html"><img class="page-nf-btn" src="./btn-emergency.svg" alt="Click to go back to Home page"/></a>
+      </div>
+    
     </main>
   </body>
 </html>
