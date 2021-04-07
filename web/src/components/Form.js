@@ -1,12 +1,25 @@
+// Style & resources
 import "../style/layout/_card-page.scss";
 import "../style/layout/_design.scss";
 import "../style/layout/_form.scss";
 import "../style/layout/_share.scss";
 
+// Services
 import api from "../services/ApiServer.js";
+
+// Components
+
+import Collapsable from "./Collapsable.js";
+import Palette from "./Palette.js";
+import Input from "./Input.js";
+import AvatarBtn from "./AvatarBtn";
+
+// React
 import React, { useState } from "react";
 
-//
+// NPM Packages
+
+// share to social media
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -23,13 +36,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-//
-
-import Collapsable from "./Collapsable.js";
-import Palette from "./Palette.js";
-import Input from "./Input.js";
-import AvatarBtn from "./AvatarBtn";
-
+// select custom colors
 import { BlockPicker } from "react-color";
 
 function Form(props) {
@@ -42,24 +49,9 @@ function Form(props) {
 
   const bgrColor = props.colors;
 
-  // const handleCreateBtn = (ev) => {
-  //   ev.preventDefault();
-
-  //   fetchCard(props.userData).then((data) => {
-  //     if (data.success === true) {
-  //       setMessage("La tarjeta ha sido creada:");
-  //       setcardURL(data.cardURL);
-  //     } else {
-  //       setMessage(data.error);
-  //       setcardURL("");
-  //     }
-  //     setHiddenClass("");
-  //   });
-  // };
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
-    const url = "/card";
     function dataSuccess(data) {
       setMessage("La tarjeta ha sido creada:");
       setcardURL(data.cardURL);
@@ -72,14 +64,6 @@ function Form(props) {
 
     api
       .fetchCard(props.userData)
-      // fetch(url, {
-      //   method: "POST",
-      //   body: JSON.stringify(props.userData),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      //   .then((response) => response.json())
       .then((data) => {
         data.success ? dataSuccess(data) : dataError(data);
         setHiddenClass("");
