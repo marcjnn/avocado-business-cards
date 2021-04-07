@@ -70,20 +70,21 @@ function Form(props) {
       setcardURL("");
     }
 
-    // api
-    //   .fetchCard(props.userData)
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(props.userData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
+    api
+      .fetchCard(props.userData)
+      // fetch(url, {
+      //   method: "POST",
+      //   body: JSON.stringify(props.userData),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
+      //   .then((response) => response.json())
       .then((data) => {
         data.success ? dataSuccess(data) : dataError(data);
         setHiddenClass("");
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   const handleColorChange = (ev) => {

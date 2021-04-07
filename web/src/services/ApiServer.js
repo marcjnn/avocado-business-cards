@@ -1,4 +1,4 @@
-const ENDPOINT = "https://awesome-profile-cards.herokuapp.com/card";
+const ENDPOINT = "https://avocado-business-cards.herokuapp.com/card";
 
 const fetchCard = (userData) => {
   return fetch(ENDPOINT, {
@@ -10,4 +10,4 @@ const fetchCard = (userData) => {
   }).then((response) => response.json());
 };
 
-export default { fetchCard: fetchCard };
+export default { fetchCard };
