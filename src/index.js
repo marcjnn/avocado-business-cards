@@ -96,7 +96,7 @@ app.post("/card", (req, res) => {
       response.cardURL = "http://localhost:3000/card/" + result.lastInsertRowid;
     } else {
       response.cardURL =
-        "https://awesome-profile-cards-team-7.herokuapp.com/card/" +
+        "https://avocado-business-cards.herokuapp.com/card/" +
         result.lastInsertRowid;
     }
   }
