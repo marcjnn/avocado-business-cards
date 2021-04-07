@@ -1,17 +1,13 @@
-const ENDPOINT = "https://avocado-business-cards.herokuapp.com/card";
+const ENDPOINT = "http://localhost:3000/card";
 
-// const fetchCard = (userData) => {
-//   return fetch(ENDPOINT, {
-//     method: "POST",
-//     body: JSON.stringify(userData),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   }).then((response) => response.json());
-// };
-
-const fetchCard = async () => {
-  const response = await fetch(ENDPOINT);
+const fetchCard = async (userData) => {
+  const response = await fetch(ENDPOINT, {
+    method: "POST",
+    body: JSON.stringify(userData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   const data = await response.json();
   return data;
 };

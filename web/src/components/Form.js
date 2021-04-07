@@ -17,8 +17,7 @@ import AvatarBtn from "./AvatarBtn";
 // React
 import React, { useState } from "react";
 
-// NPM Packages
-
+// NPM Packages:
 // share to social media
 import {
   EmailShareButton,
@@ -62,17 +61,18 @@ function Form(props) {
       setcardURL("");
     }
 
-    api
-      .fetchCard(props.userData)
-      .then((data) => {
-        data.success ? dataSuccess(data) : dataError(data);
-        setHiddenClass("");
-      })
-      .catch((error) => console.log(error));
+    const fetchData = async () => {
+      const data = await api
+        .fetchCard(props.userData)
+        .catch((e) => console.log("Error: ", e.message));
+      data.success ? dataSuccess(data) : dataError(data);
+      setHiddenClass("");
+    };
+
+    fetchData();
   };
 
   const handleColorChange = (ev) => {
-    console.log(ev.target.closest(".color-container"));
     const parent = ev.target.closest(".color-container");
     const attr = parent.getAttribute("data-color");
     return attr;
@@ -80,9 +80,7 @@ function Form(props) {
 
   const onSwatchHover = (color, ev) => {
     handleColorChange(ev);
-    console.log(color);
     const attr = handleColorChange(ev);
-    console.log(attr);
     if (attr === "1") {
       props.handleUpdateColors({ key: "color1", color: color.hex });
     }
@@ -168,7 +166,7 @@ function Form(props) {
         fieldset="form"
         isClose={true}
       >
-        <div className="form js-form">
+        <div className="form">
           <Input
             name="name"
             label="Nombre completo"
@@ -230,16 +228,21 @@ function Form(props) {
         isClose={true}
       >
         <button
-          className="button__create link_animation js-create-btn"
+          className="button__create link_animation"
           onClick={handleCreateBtn}
         >
           <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
           tarjeta
         </button>
 
-        <div className={`confirm__share js-card-result ${hiddenClass}`}>
+        <div className={`confirm__share ${hiddenClass}`}>
           <p className="confirm__share--title">{message}</p>
-          <a className="confirm__share--link" href={cardURL}>
+          <a
+            className="confirm__share--link"
+            href={cardURL}
+            target="_blank"
+            rel="noreferrer"
+          >
             {cardURL}
           </a>
           <div className={`social-icons ${visibilitySocialIcons}`}>
