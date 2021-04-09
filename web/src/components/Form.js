@@ -11,6 +11,7 @@ import api from "../services/ApiServer.js";
 
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
+import PaletteCustom from "./PaletteCustom";
 import Input from "./Input.js";
 import AvatarBtn from "./AvatarBtn";
 
@@ -202,33 +203,11 @@ function Form(props) {
           color2={`${bgrColor.color2}`}
           color3={`${bgrColor.color3}`}
         />
-        {props.selectedPalette === "4" ? (
-          <div className="color-pickers">
-            <BlockPicker
-              color={bgrColor.color1}
-              onSwatchHover={onSwatchHover}
-              onChangeComplete={onSwatchHover}
-              width="100%"
-              colors={[]}
-            />
-            <BlockPicker
-              color={bgrColor.color2}
-              onSwatchHover={onSwatchHover}
-              onChangeComplete={onSwatchHover}
-              width="100%"
-              colors={[]}
-            />
-            <BlockPicker
-              color={bgrColor.color3}
-              onSwatchHover={onSwatchHover}
-              onChangeComplete={onSwatchHover}
-              width="100%"
-              colors={[]}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
+        <PaletteCustom
+          selectedPalette={props.selectedPalette}
+          colors={props.colors}
+          handleUpdateColors={props.handleUpdateColors}
+        />
       </Collapsable>
       <Collapsable
         title="Rellena"
