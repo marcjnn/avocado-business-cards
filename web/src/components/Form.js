@@ -39,12 +39,23 @@ import {
 import { BlockPicker } from "react-color";
 
 function Form(props) {
-  const [message, setMessage] = useState("");
-  const [cardURL, setcardURL] = useState("");
-  const [hiddenClass, setHiddenClass] = useState("share-hidden");
-  const [visibilitySocialIcons, setvisibilitySocialIcons] = useState(
-    "share-hidden"
-  );
+  // const [message, setMessage] = useState("");
+  // const [cardURL, setcardURL] = useState("");
+  // const [hiddenClass, setHiddenClass] = useState("share-hidden");
+  // const [visibilitySocialIcons, setvisibilitySocialIcons] = useState(
+  //   "share-hidden"
+  // );
+
+  //
+
+  const [apiResponse, setApiResponse] = useState({
+    success: false,
+    message: "",
+    cardURL: "",
+    // hiddenClass: ""
+  });
+
+  //
 
   const bgrColor = props.colors;
 
@@ -52,13 +63,25 @@ function Form(props) {
     ev.preventDefault();
 
     function dataSuccess(data) {
-      setMessage("La tarjeta ha sido creada:");
-      setcardURL(data.cardURL);
-      setvisibilitySocialIcons("");
+      // setMessage("La tarjeta ha sido creada:");
+      // setcardURL(data.cardURL);
+      // setvisibilitySocialIcons("");
+      setApiResponse({
+        ...apiResponse,
+        success: true,
+        message: "La tarjeta ha sido creada:",
+        cardURL: data.cardURL,
+      });
     }
     function dataError(data) {
-      setMessage(data.error);
-      setcardURL("");
+      // setMessage(data.error);
+      // setcardURL("");
+      setApiResponse({
+        ...apiResponse,
+        success: false,
+        message: data.error,
+        cardURL: "",
+      });
     }
 
     const fetchData = async () => {
@@ -66,11 +89,13 @@ function Form(props) {
         .fetchCard(props.userData)
         .catch((e) => console.log("Error: ", e.message));
       data.success ? dataSuccess(data) : dataError(data);
-      setHiddenClass("");
+      // setHiddenClass("");
     };
 
     fetchData();
   };
+
+  // color picker
 
   const handleColorChange = (ev) => {
     const parent = ev.target.closest(".color-container");
@@ -90,6 +115,84 @@ function Form(props) {
     if (attr === "3") {
       props.handleUpdateColors({ key: "color3", color: color.hex });
     }
+  };
+
+  const renderShare = () => {
+    return !apiResponse.success ? (
+      <p className="confirm__share--title">{apiResponse.message}</p>
+    ) : (
+      <>
+        <p className="confirm__share--title">{apiResponse.message}</p>
+        <a
+          className="confirm__share--link"
+          href={apiResponse.cardURL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          haz click aquí para ver tu nueva tarjeta
+        </a>
+        <div className="social-icons">
+          <p className="social-icons--title">Comparte tu nueva tarjeta:</p>
+          <EmailShareButton
+            url={apiResponse.cardURL}
+            children={
+              <EmailIcon
+                className="social-icons--icon"
+                size={32}
+                round={true}
+              />
+            }
+            subject="Mi nueva tarjeta de visita"
+            body="Te mando mi nueva tarjeta hecha por las Awesome Reacters. (Si quieres una igual, entra en https://beta.adalab.es/project-promo-l-module-3-team-7/#/)"
+            separator=" => "
+          />
+          <FacebookShareButton
+            url={apiResponse.cardURL}
+            children={
+              <FacebookIcon
+                className="social-icons--icon"
+                size={32}
+                round={true}
+              />
+            }
+            quote="Mi nueva tarjeta de visita"
+          />
+          <TwitterShareButton
+            url={apiResponse.cardURL}
+            children={
+              <TwitterIcon
+                className="social-icons--icon"
+                size={32}
+                round={true}
+              />
+            }
+            title="Mi nueva tarjeta de visita"
+          />
+          <WhatsappShareButton
+            url={apiResponse.cardURL}
+            children={
+              <WhatsappIcon
+                className="social-icons--icon"
+                size={32}
+                round={true}
+              />
+            }
+            title="Mi nueva tarjeta de visita"
+          />
+          <TelegramShareButton
+            url={apiResponse.cardURL}
+            children={
+              <TelegramIcon
+                className="social-icons--icon"
+                size={32}
+                round={true}
+              />
+            }
+            title="Mi nueva tarjeta de visita"
+          />
+        </div>
+      </>
+    );
   };
 
   return (
@@ -234,8 +337,8 @@ function Form(props) {
           <i className="fa fa-address-card-o" aria-hidden="true"></i>Crear
           tarjeta
         </button>
-
-        <div className={`confirm__share ${hiddenClass}`}>
+        <div className="confirm__share">{renderShare()}</div>
+        {/* <div className={`confirm__share ${hiddenClass}`}>
           <p className="confirm__share--title">{message}</p>
           <a
             className="confirm__share--link"
@@ -305,7 +408,7 @@ function Form(props) {
               title="Mi nueva tarjeta de visita"
             />
           </div>
-        </div>
+        </div> */}
       </Collapsable>
     </form>
   );
