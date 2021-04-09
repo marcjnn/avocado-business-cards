@@ -14,27 +14,10 @@ import Palette from "./Palette.js";
 import CustomColors from "./CustomColors";
 import Input from "./Input.js";
 import AvatarBtn from "./AvatarBtn";
+import ShareSocial from "./ShareSocial";
 
 // React
 import React, { useState } from "react";
-
-// NPM Packages:
-// share to social media
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
-
-import {
-  EmailIcon,
-  FacebookIcon,
-  TelegramIcon,
-  TwitterIcon,
-  WhatsappIcon,
-} from "react-share";
 
 function Form(props) {
   const [apiResponse, setApiResponse] = useState({
@@ -87,66 +70,7 @@ function Form(props) {
         >
           haz click aquí para ver tu nueva tarjeta
         </a>
-        <div className="social-icons">
-          <p className="social-icons--title">Comparte tu nueva tarjeta:</p>
-          <EmailShareButton
-            url={apiResponse.cardURL}
-            children={
-              <EmailIcon
-                className="social-icons--icon"
-                size={32}
-                round={true}
-              />
-            }
-            subject="Mi nueva tarjeta de visita"
-            body="Te mando mi nueva tarjeta hecha por las Awesome Reacters. (Si quieres una igual, entra en https://beta.adalab.es/project-promo-l-module-3-team-7/#/)"
-            separator=" => "
-          />
-          <FacebookShareButton
-            url={apiResponse.cardURL}
-            children={
-              <FacebookIcon
-                className="social-icons--icon"
-                size={32}
-                round={true}
-              />
-            }
-            quote="Mi nueva tarjeta de visita"
-          />
-          <TwitterShareButton
-            url={apiResponse.cardURL}
-            children={
-              <TwitterIcon
-                className="social-icons--icon"
-                size={32}
-                round={true}
-              />
-            }
-            title="Mi nueva tarjeta de visita"
-          />
-          <WhatsappShareButton
-            url={apiResponse.cardURL}
-            children={
-              <WhatsappIcon
-                className="social-icons--icon"
-                size={32}
-                round={true}
-              />
-            }
-            title="Mi nueva tarjeta de visita"
-          />
-          <TelegramShareButton
-            url={apiResponse.cardURL}
-            children={
-              <TelegramIcon
-                className="social-icons--icon"
-                size={32}
-                round={true}
-              />
-            }
-            title="Mi nueva tarjeta de visita"
-          />
-        </div>
+        <ShareSocial apiResponse={apiResponse} />
       </>
     );
   };
