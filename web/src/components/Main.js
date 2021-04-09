@@ -1,13 +1,13 @@
 //import "../style/App.scss";
-import Form from './Form';
-import Preview from './Preview';
-import '../style/layout/_card-page.scss';
-import defaultImage from '../images/profile_image.gif';
-import React, { useEffect, useState } from 'react';
+import Form from "./Form";
+import Preview from "./Preview";
+import "../style/layout/_card-page.scss";
+import defaultImage from "../images/profile_image.gif";
+import React, { useEffect, useState } from "react";
 
 function Main() {
   function getFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('userDataAPC'));
+    return JSON.parse(localStorage.getItem("userDataAPC"));
   }
 
   const savedUserData = getFromLocalStorage();
@@ -27,17 +27,17 @@ function Main() {
         }
       : {
           photo: defaultImage,
-          palette: '1',
-          name: '',
-          job: '',
-          email: '',
-          phone: '',
-          linkedin: '',
-          github: '',
+          palette: "1",
+          name: "",
+          job: "",
+          email: "",
+          phone: "",
+          linkedin: "",
+          github: "",
           customColors: {
-            color1: '#667788',
-            color2: '#f47373',
-            color3: '#FABDAA',
+            color1: "#667788",
+            color2: "#f47373",
+            color3: "#FABDAA",
           },
         }
   );
@@ -49,26 +49,10 @@ function Main() {
   };
 
   const handleUpdateColors = (value) => {
-    console.log('trying to change the color');
-    console.log(value);
-    if (value.key === 'color1') {
-      setUserData({
-        ...userData,
-        customColors: { ...userData.customColors, color1: value.color },
-      });
-    }
-    if (value.key === 'color2') {
-      setUserData({
-        ...userData,
-        customColors: { ...userData.customColors, color2: value.color },
-      });
-    }
-    if (value.key === 'color3') {
-      setUserData({
-        ...userData,
-        customColors: { ...userData.customColors, color3: value.color },
-      });
-    }
+    setUserData({
+      ...userData,
+      customColors: { ...userData.customColors, [value.key]: value.color },
+    });
   };
 
   function handleInput(ev) {
@@ -95,7 +79,7 @@ function Main() {
   }
 
   useEffect(() => {
-    localStorage.setItem('userDataAPC', JSON.stringify(userData));
+    localStorage.setItem("userDataAPC", JSON.stringify(userData));
   }, [userData]);
 
   function updateAvatar(img) {
@@ -106,22 +90,22 @@ function Main() {
     return setUserData({
       ...userData,
       photo: defaultImage,
-      palette: '1',
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
+      palette: "1",
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
       customColors: {
-        color1: '#667788',
-        color2: '#f47373',
-        color3: '#FABDAA',
+        color1: "#667788",
+        color2: "#f47373",
+        color3: "#FABDAA",
       },
     });
   };
   return (
-    <main className='main'>
+    <main className="main">
       <Preview
         job={userData.job}
         name={userData.name}
@@ -132,7 +116,7 @@ function Main() {
         selectedPalette={userData.palette}
         avatar={userData.photo}
         resetUserData={resetUserData}
-        colors={userData.palette === '4' ? userData.customColors : {}}
+        colors={userData.palette === "4" ? userData.customColors : {}}
       />
       <Form
         job={userData.job}

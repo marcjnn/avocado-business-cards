@@ -77,28 +77,6 @@ function Form(props) {
     fetchData();
   };
 
-  // color picker
-
-  const handleColorChange = (ev) => {
-    const parent = ev.target.closest(".color-container");
-    const attr = parent.getAttribute("data-color");
-    return attr;
-  };
-
-  const onSwatchHover = (color, ev) => {
-    handleColorChange(ev);
-    const attr = handleColorChange(ev);
-    if (attr === "1") {
-      props.handleUpdateColors({ key: "color1", color: color.hex });
-    }
-    if (attr === "2") {
-      props.handleUpdateColors({ key: "color2", color: color.hex });
-    }
-    if (attr === "3") {
-      props.handleUpdateColors({ key: "color3", color: color.hex });
-    }
-  };
-
   const renderShare = () => {
     return !apiResponse.success ? (
       <p className="confirm__share--title">{apiResponse.message}</p>
@@ -177,6 +155,21 @@ function Form(props) {
     );
   };
 
+  // color picker
+
+  const onSwatchHover = (color, ev) => {
+    const targetColorId = ev.target.id;
+    if (targetColorId === "rc-editable-input-2") {
+      props.handleUpdateColors({ key: "color1", color: color.hex });
+    }
+    if (targetColorId === "rc-editable-input-4") {
+      props.handleUpdateColors({ key: "color2", color: color.hex });
+    }
+    if (targetColorId === "rc-editable-input-6") {
+      props.handleUpdateColors({ key: "color3", color: color.hex });
+    }
+  };
+
   return (
     <form method="" action="" className="collapsable-container">
       <Collapsable
@@ -191,13 +184,11 @@ function Form(props) {
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
         />
-
         <Palette
           value="2"
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
         />
-
         <Palette
           value="3"
           selectedPalette={props.selectedPalette}
@@ -213,33 +204,27 @@ function Form(props) {
         />
         {props.selectedPalette === "4" ? (
           <div className="color-pickers">
-            <div className="color-container" data-color="1">
-              <BlockPicker
-                color={bgrColor.color1}
-                onSwatchHover={onSwatchHover}
-                onChangeComplete={onSwatchHover}
-                width="100%"
-                colors={[]}
-              />
-            </div>
-            <div className="color-container" data-color="2">
-              <BlockPicker
-                color={bgrColor.color2}
-                onSwatchHover={onSwatchHover}
-                onChangeComplete={onSwatchHover}
-                width="100%"
-                colors={[]}
-              />
-            </div>
-            <div className="color-container" data-color="3">
-              <BlockPicker
-                color={bgrColor.color3}
-                onSwatchHover={onSwatchHover}
-                onChangeComplete={onSwatchHover}
-                width="100%"
-                colors={[]}
-              />
-            </div>
+            <BlockPicker
+              color={bgrColor.color1}
+              onSwatchHover={onSwatchHover}
+              onChangeComplete={onSwatchHover}
+              width="100%"
+              colors={[]}
+            />
+            <BlockPicker
+              color={bgrColor.color2}
+              onSwatchHover={onSwatchHover}
+              onChangeComplete={onSwatchHover}
+              width="100%"
+              colors={[]}
+            />
+            <BlockPicker
+              color={bgrColor.color3}
+              onSwatchHover={onSwatchHover}
+              onChangeComplete={onSwatchHover}
+              width="100%"
+              colors={[]}
+            />
           </div>
         ) : (
           <></>
