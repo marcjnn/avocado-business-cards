@@ -11,7 +11,7 @@ import api from "../services/ApiServer.js";
 
 import Collapsable from "./Collapsable.js";
 import Palette from "./Palette.js";
-import PaletteCustom from "./PaletteCustom";
+import CustomColors from "./CustomColors";
 import Input from "./Input.js";
 import AvatarBtn from "./AvatarBtn";
 
@@ -199,11 +199,11 @@ function Form(props) {
           value="4"
           selectedPalette={props.selectedPalette}
           changePalette={props.changePalette}
-          color1={`${bgrColor.color1}`}
-          color2={`${bgrColor.color2}`}
-          color3={`${bgrColor.color3}`}
+          color1={props.colors.color1}
+          color2={props.colors.color2}
+          color3={props.colors.color3}
         />
-        <PaletteCustom
+        <CustomColors
           selectedPalette={props.selectedPalette}
           colors={props.colors}
           handleUpdateColors={props.handleUpdateColors}
