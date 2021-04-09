@@ -39,23 +39,11 @@ import {
 import { BlockPicker } from "react-color";
 
 function Form(props) {
-  // const [message, setMessage] = useState("");
-  // const [cardURL, setcardURL] = useState("");
-  // const [hiddenClass, setHiddenClass] = useState("share-hidden");
-  // const [visibilitySocialIcons, setvisibilitySocialIcons] = useState(
-  //   "share-hidden"
-  // );
-
-  //
-
   const [apiResponse, setApiResponse] = useState({
     success: false,
     message: "",
     cardURL: "",
-    // hiddenClass: ""
   });
-
-  //
 
   const bgrColor = props.colors;
 
@@ -63,9 +51,6 @@ function Form(props) {
     ev.preventDefault();
 
     function dataSuccess(data) {
-      // setMessage("La tarjeta ha sido creada:");
-      // setcardURL(data.cardURL);
-      // setvisibilitySocialIcons("");
       setApiResponse({
         ...apiResponse,
         success: true,
@@ -74,8 +59,6 @@ function Form(props) {
       });
     }
     function dataError(data) {
-      // setMessage(data.error);
-      // setcardURL("");
       setApiResponse({
         ...apiResponse,
         success: false,
@@ -89,7 +72,6 @@ function Form(props) {
         .fetchCard(props.userData)
         .catch((e) => console.log("Error: ", e.message));
       data.success ? dataSuccess(data) : dataError(data);
-      // setHiddenClass("");
     };
 
     fetchData();
@@ -338,77 +320,6 @@ function Form(props) {
           tarjeta
         </button>
         <div className="confirm__share">{renderShare()}</div>
-        {/* <div className={`confirm__share ${hiddenClass}`}>
-          <p className="confirm__share--title">{message}</p>
-          <a
-            className="confirm__share--link"
-            href={cardURL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {cardURL}
-          </a>
-          <div className={`social-icons ${visibilitySocialIcons}`}>
-            <p className="social-icons--title">Comparte tu nueva tarjeta:</p>
-            <EmailShareButton
-              url={cardURL}
-              children={
-                <EmailIcon
-                  className="social-icons--icon"
-                  size={32}
-                  round={true}
-                />
-              }
-              subject="Mi nueva tarjeta de visita"
-              body="Te mando mi nueva tarjeta hecha por las Awesome Reacters. (Si quieres una igual, entra en https://beta.adalab.es/project-promo-l-module-3-team-7/#/)"
-              separator=" => "
-            />
-            <FacebookShareButton
-              url={cardURL}
-              children={
-                <FacebookIcon
-                  className="social-icons--icon"
-                  size={32}
-                  round={true}
-                />
-              }
-              quote="Mi nueva tarjeta de visita"
-            />
-            <TwitterShareButton
-              url={cardURL}
-              children={
-                <TwitterIcon
-                  className="social-icons--icon"
-                  size={32}
-                  round={true}
-                />
-              }
-              title="Mi nueva tarjeta de visita"
-            />
-            <WhatsappShareButton
-              url={cardURL}
-              children={
-                <WhatsappIcon
-                  className="social-icons--icon"
-                  size={32}
-                  round={true}
-                />
-              }
-              title="Mi nueva tarjeta de visita"
-            />
-            <TelegramShareButton
-              url={cardURL}
-              children={
-                <TelegramIcon
-                  className="social-icons--icon"
-                  size={32}
-                  round={true}
-                />
-              }
-              title="Mi nueva tarjeta de visita"
-            />
-          </div>
-        </div> */}
       </Collapsable>
     </form>
   );
