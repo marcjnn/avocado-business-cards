@@ -36,17 +36,12 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-// select custom colors
-import { BlockPicker } from "react-color";
-
 function Form(props) {
   const [apiResponse, setApiResponse] = useState({
     success: false,
     message: "",
     cardURL: "",
   });
-
-  const bgrColor = props.colors;
 
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
@@ -154,21 +149,6 @@ function Form(props) {
         </div>
       </>
     );
-  };
-
-  // color picker
-
-  const onSwatchHover = (color, ev) => {
-    const targetColorId = ev.target.id;
-    if (targetColorId === "rc-editable-input-2") {
-      props.handleUpdateColors({ key: "color1", color: color.hex });
-    }
-    if (targetColorId === "rc-editable-input-4") {
-      props.handleUpdateColors({ key: "color2", color: color.hex });
-    }
-    if (targetColorId === "rc-editable-input-6") {
-      props.handleUpdateColors({ key: "color3", color: color.hex });
-    }
   };
 
   return (
