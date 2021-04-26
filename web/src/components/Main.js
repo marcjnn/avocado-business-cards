@@ -127,13 +127,13 @@ function Main() {
         // github={userData.github}
         handleInput={handleInput}
         // selectedPalette={userData.palette}
-        changePalette={handleChangePalette}
+        handleChangePalette={handleChangePalette}
         // avatar={userData.photo}
+        handleUpdateColors={handleUpdateColors}
         updateAvatar={updateAvatar}
         isAvatarDefault={isAvatarDefault}
         userData={userData}
         // colors={userData.customColors}
-        handleUpdateColors={handleUpdateColors}
       />
     </main>
   );

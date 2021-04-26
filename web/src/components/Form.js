@@ -39,6 +39,14 @@ function Form(props) {
     customColors,
   } = props.userData;
 
+  const {
+    handleInput,
+    handleChangePalette,
+    updateAvatar,
+    isAvatarDefault,
+    handleUpdateColors,
+  } = props;
+
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
@@ -100,22 +108,22 @@ function Form(props) {
         <Palette
           value="1"
           selectedPalette={palette}
-          changePalette={props.changePalette}
+          changePalette={handleChangePalette}
         />
         <Palette
           value="2"
           selectedPalette={palette}
-          changePalette={props.changePalette}
+          changePalette={handleChangePalette}
         />
         <Palette
           value="3"
           selectedPalette={palette}
-          changePalette={props.changePalette}
+          changePalette={handleChangePalette}
         />
         <Palette
           value="4"
           selectedPalette={palette}
-          changePalette={props.changePalette}
+          changePalette={handleChangePalette}
           color1={customColors.color1}
           color2={customColors.color2}
           color3={customColors.color3}
@@ -123,7 +131,7 @@ function Form(props) {
         <CustomColors
           selectedPalette={palette}
           colors={customColors}
-          handleUpdateColors={props.handleUpdateColors}
+          handleUpdateColors={handleUpdateColors}
         />
       </Collapsable>
       <Collapsable
@@ -138,20 +146,20 @@ function Form(props) {
             label="Nombre completo"
             placeholder="Nombre completo"
             value={name}
-            handleInput={props.handleInput}
+            handleInput={handleInput}
           />
           <Input
             name="job"
             label="Puesto"
             placeholder="Profesión"
             value={job}
-            handleInput={props.handleInput}
+            handleInput={handleInput}
           />
 
           <AvatarBtn
             avatar={photo}
-            updateAvatar={props.updateAvatar}
-            isAvatarDefault={props.isAvatarDefault}
+            updateAvatar={updateAvatar}
+            isAvatarDefault={isAvatarDefault}
           />
 
           <Input
@@ -160,7 +168,7 @@ function Form(props) {
             placeholder="nombre.apellido@example.com"
             type="email"
             value={email}
-            handleInput={props.handleInput}
+            handleInput={handleInput}
           />
           <Input
             name="phone"
@@ -168,7 +176,7 @@ function Form(props) {
             placeholder="+34 666666666"
             type="tel"
             value={phone}
-            handleInput={props.handleInput}
+            handleInput={handleInput}
           />
 
           <Input
@@ -176,14 +184,14 @@ function Form(props) {
             label="Linkedin"
             placeholder="Nombre de usuario de LinkedIn"
             value={linkedin}
-            handleInput={props.handleInput}
+            handleInput={handleInput}
           />
           <Input
             name="github"
             label="Github"
             placeholder="Nombre de usuario de GitHub"
             value={github}
-            handleInput={props.handleInput}
+            handleInput={handleInput}
           />
         </div>
       </Collapsable>
