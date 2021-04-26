@@ -5,7 +5,9 @@ function Social(props) {
     // <li className='logo__list--item js-logo-list hidden'>
     <li
       className="logo__list--item js-logo-list"
-      style={props.color3 ? { border: `2px solid ${props.color3}` } : {}}
+      style={
+        props.palette === "4" ? { border: `2px solid ${props.color3}` } : {}
+      }
     >
       <a
         className={"link__card js-preview-" + props.aClass}
@@ -14,7 +16,7 @@ function Social(props) {
       >
         <i
           className={"fa fa-" + props.iClass}
-          style={{ color: props.color1 }}
+          style={props.palette === "4" ? { color: props.color1 } : {}}
         ></i>
       </a>
     </li>

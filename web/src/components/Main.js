@@ -109,16 +109,17 @@ function Main() {
   return (
     <main className="main">
       <Preview
-        job={userData.job}
-        name={userData.name}
-        email={userData.email}
-        phone={userData.phone}
-        linkedin={userData.linkedin}
-        github={userData.github}
-        selectedPalette={userData.palette}
+        userData={userData}
+        // job={userData.job}
+        // name={userData.name}
+        // email={userData.email}
+        // phone={userData.phone}
+        // linkedin={userData.linkedin}
+        // github={userData.github}
+        // selectedPalette={userData.palette}
         avatar={userData.photo}
         resetUserData={resetUserData}
-        colors={userData.palette === "4" ? userData.customColors : {}}
+        // colors={userData.palette === "4" ? userData.customColors : {}}
       />
       <Form
         // job={userData.job}
