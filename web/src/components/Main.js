@@ -119,20 +119,20 @@ function Main() {
         colors={userData.palette === "4" ? userData.customColors : {}}
       />
       <Form
-        job={userData.job}
-        name={userData.name}
-        email={userData.email}
-        phone={userData.phone}
-        linkedin={userData.linkedin}
-        github={userData.github}
+        // job={userData.job}
+        // name={userData.name}
+        // email={userData.email}
+        // phone={userData.phone}
+        // linkedin={userData.linkedin}
+        // github={userData.github}
         handleInput={handleInput}
-        selectedPalette={userData.palette}
+        // selectedPalette={userData.palette}
         changePalette={handleChangePalette}
-        avatar={userData.photo}
+        // avatar={userData.photo}
         updateAvatar={updateAvatar}
         isAvatarDefault={isAvatarDefault}
         userData={userData}
-        colors={userData.customColors}
+        // colors={userData.customColors}
         handleUpdateColors={handleUpdateColors}
       />
     </main>
