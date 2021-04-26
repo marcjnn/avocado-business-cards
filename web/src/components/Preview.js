@@ -4,24 +4,27 @@ import Social from "./Social";
 
 function Preview(props) {
   const {
-    photo,
-    palette,
-    name,
-    job,
-    email,
-    phone,
-    linkedin,
-    github,
-    customColors: colors,
-  } = props.userData;
+    resetUserData,
+    userData: {
+      photo,
+      palette,
+      name,
+      job,
+      email,
+      phone,
+      linkedin,
+      github,
+      customColors: colors,
+    },
+  } = props;
   const handleResetClick = () => {
-    props.resetUserData();
+    resetUserData();
   };
 
   return (
     <section className="section__card">
       <div className="section__container">
-        <button className="reset js-reset" onClick={handleResetClick}>
+        <button className="reset" onClick={handleResetClick}>
           <i className="fa fa-trash"></i>Reset
         </button>
         <div className={`card palette3card js_preview-card palette-${palette}`}>
@@ -34,12 +37,12 @@ function Preview(props) {
             }
           >
             <h3
-              className="card__titles--name js-preview-name"
+              className="card__titles--name"
               style={palette === "4" ? { color: colors.color1 } : {}}
             >
               {name || "Nombre apellidos"}
             </h3>
-            <h4 className="card__titles--job js-preview-job">
+            <h4 className="card__titles--job">
               {job || "Programadora front end"}
             </h4>
           </div>

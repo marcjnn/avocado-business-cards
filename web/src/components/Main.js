@@ -108,35 +108,14 @@ function Main() {
   };
   return (
     <main className="main">
-      <Preview
-        userData={userData}
-        // job={userData.job}
-        // name={userData.name}
-        // email={userData.email}
-        // phone={userData.phone}
-        // linkedin={userData.linkedin}
-        // github={userData.github}
-        // selectedPalette={userData.palette}
-        // avatar={userData.photo}
-        resetUserData={resetUserData}
-        // colors={userData.palette === "4" ? userData.customColors : {}}
-      />
+      <Preview userData={userData} resetUserData={resetUserData} />
       <Form
-        // job={userData.job}
-        // name={userData.name}
-        // email={userData.email}
-        // phone={userData.phone}
-        // linkedin={userData.linkedin}
-        // github={userData.github}
         handleInput={handleInput}
-        // selectedPalette={userData.palette}
         handleChangePalette={handleChangePalette}
-        // avatar={userData.photo}
         handleUpdateColors={handleUpdateColors}
         updateAvatar={updateAvatar}
         isAvatarDefault={isAvatarDefault}
         userData={userData}
-        // colors={userData.customColors}
       />
     </main>
   );

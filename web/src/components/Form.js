@@ -26,25 +26,23 @@ function Form(props) {
     cardURL: "",
   });
 
-  // const {name, status, species, origin} = this.character; ???
-  const {
-    photo,
-    palette,
-    name,
-    job,
-    email,
-    phone,
-    linkedin,
-    github,
-    customColors,
-  } = props.userData;
-
   const {
     handleInput,
     handleChangePalette,
     updateAvatar,
     isAvatarDefault,
     handleUpdateColors,
+    userData: {
+      photo,
+      palette,
+      name,
+      job,
+      email,
+      phone,
+      linkedin,
+      github,
+      customColors,
+    },
   } = props;
 
   const handleCreateBtn = (ev) => {

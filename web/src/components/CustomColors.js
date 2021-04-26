@@ -7,7 +7,6 @@ function PaletteCustom(props) {
 
   // when refactoring the code add 'console.log(ev.target.id);' at the beginning to make sure which input is being selected - sometimes the id change during the refactorization but at the end they always come back to 2-4-6
   const onSwatchHover = (color, ev) => {
-    console.log(ev.target.id);
     const targetColorId = ev.target.id;
     if (targetColorId === "rc-editable-input-2") {
       props.handleUpdateColors({ key: "color1", color: color.hex });
