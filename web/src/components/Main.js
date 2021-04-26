@@ -41,7 +41,9 @@ function Main() {
           },
         }
   );
-  const [isAvatarDefault, setIsAvatarDefault] = useState(true);
+  const [isAvatarDefault, setIsAvatarDefault] = useState(
+    userData.photo === defaultImage ? true : false
+  );
 
   const handleChangePalette = (ev) => {
     const newValue = ev.currentTarget.value;
