@@ -4,11 +4,9 @@ function Collapsable(props) {
   const { title, icon, fieldset, isClose } = props;
 
   let [isCollapsableClose, setIsCollapsableClose] = useState(isClose);
-  // let [classClose, setClassClose] = useState(
-  //   isCollapsableClose ? "collapsable--close" : ""
+
   const handleLegendClick = () => {
     setIsCollapsableClose(!isCollapsableClose);
-    // setClassClose(isCollapsableClose ? "" : "collapsable--close");
   };
 
   const classClose = isCollapsableClose ? "collapsable--close" : "";
