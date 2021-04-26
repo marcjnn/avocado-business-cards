@@ -26,6 +26,19 @@ function Form(props) {
     cardURL: "",
   });
 
+  // const {name, status, species, origin} = this.character; ???
+  const {
+    photo,
+    palette,
+    name,
+    job,
+    email,
+    phone,
+    linkedin,
+    github,
+    customColors,
+  } = props.userData;
+
   const handleCreateBtn = (ev) => {
     ev.preventDefault();
 
@@ -86,30 +99,30 @@ function Form(props) {
         <h3 className="design__title">colores</h3>
         <Palette
           value="1"
-          selectedPalette={props.userData.palette}
+          selectedPalette={palette}
           changePalette={props.changePalette}
         />
         <Palette
           value="2"
-          selectedPalette={props.userData.palette}
+          selectedPalette={palette}
           changePalette={props.changePalette}
         />
         <Palette
           value="3"
-          selectedPalette={props.userData.palette}
+          selectedPalette={palette}
           changePalette={props.changePalette}
         />
         <Palette
           value="4"
-          selectedPalette={props.userData.palette}
+          selectedPalette={palette}
           changePalette={props.changePalette}
-          color1={props.userData.customColors.color1}
-          color2={props.userData.customColors.color2}
-          color3={props.userData.customColors.color3}
+          color1={customColors.color1}
+          color2={customColors.color2}
+          color3={customColors.color3}
         />
         <CustomColors
-          selectedPalette={props.userData.palette}
-          colors={props.userData.customColors}
+          selectedPalette={palette}
+          colors={customColors}
           handleUpdateColors={props.handleUpdateColors}
         />
       </Collapsable>
@@ -124,19 +137,19 @@ function Form(props) {
             name="name"
             label="Nombre completo"
             placeholder="Nombre completo"
-            value={props.userData.name}
+            value={name}
             handleInput={props.handleInput}
           />
           <Input
             name="job"
             label="Puesto"
             placeholder="Profesión"
-            value={props.userData.job}
+            value={job}
             handleInput={props.handleInput}
           />
 
           <AvatarBtn
-            avatar={props.userData.photo}
+            avatar={photo}
             updateAvatar={props.updateAvatar}
             isAvatarDefault={props.isAvatarDefault}
           />
@@ -146,7 +159,7 @@ function Form(props) {
             label="email"
             placeholder="nombre.apellido@example.com"
             type="email"
-            value={props.userData.email}
+            value={email}
             handleInput={props.handleInput}
           />
           <Input
@@ -154,7 +167,7 @@ function Form(props) {
             label="Telefono"
             placeholder="+34 666666666"
             type="tel"
-            value={props.userData.phone}
+            value={phone}
             handleInput={props.handleInput}
           />
 
@@ -162,14 +175,14 @@ function Form(props) {
             name="linkedin"
             label="Linkedin"
             placeholder="Nombre de usuario de LinkedIn"
-            value={props.userData.linkedin}
+            value={linkedin}
             handleInput={props.handleInput}
           />
           <Input
             name="github"
             label="Github"
             placeholder="Nombre de usuario de GitHub"
-            value={props.userData.github}
+            value={github}
             handleInput={props.handleInput}
           />
         </div>
