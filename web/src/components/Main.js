@@ -117,7 +117,7 @@ function Main() {
         // linkedin={userData.linkedin}
         // github={userData.github}
         // selectedPalette={userData.palette}
-        avatar={userData.photo}
+        // avatar={userData.photo}
         resetUserData={resetUserData}
         // colors={userData.palette === "4" ? userData.customColors : {}}
       />

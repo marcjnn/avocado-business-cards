@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Social from "./Social";
 
 function Preview(props) {
-  console.log(props);
   const {
     photo,
     palette,
@@ -18,9 +17,7 @@ function Preview(props) {
   const handleResetClick = () => {
     props.resetUserData();
   };
-  // console.log(props.colors);
-  console.log(palette);
-  console.log(colors);
+
   return (
     <section className="section__card">
       <div className="section__container">
@@ -48,7 +45,7 @@ function Preview(props) {
           </div>
           <div
             className="card__image js__profile-image"
-            style={{ backgroundImage: `url(${props.avatar})` }}
+            style={{ backgroundImage: `url(${photo})` }}
           ></div>
           <div className="card__links--container">
             <ul className="logo__list">
@@ -93,7 +90,7 @@ function Preview(props) {
 }
 
 Preview.propTypes = {
-  avatar: PropTypes.string.isRequired,
+  userData: PropTypes.object.isRequired,
 };
 
 export default Preview;
