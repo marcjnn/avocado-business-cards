@@ -1,42 +1,28 @@
 import React, { useState } from "react";
 
 function Collapsable(props) {
-  // let [isOpen, setOpen] = useState(true);
-  // let [classClose, setClass] = useState("");
-  // const handleLegendClick = () => {
-  //   setOpen(!isOpen);
-  //   setClass((classClose = isOpen ? "collapsable--close" : ""));
-  // };
+  const { title, icon, fieldset, isClose } = props;
 
-  let [isClose, setClose] = useState(props.isClose);
-  let [classClose, setClassClose] = useState(
-    isClose ? "collapsable--close" : ""
-  );
+  let [isCollapsableClose, setIsCollapsableClose] = useState(isClose);
+  // let [classClose, setClassClose] = useState(
+  //   isCollapsableClose ? "collapsable--close" : ""
   const handleLegendClick = () => {
-    setClose(!isClose);
-    setClassClose(isClose ? "" : "collapsable--close");
+    setIsCollapsableClose(!isCollapsableClose);
+    // setClassClose(isCollapsableClose ? "" : "collapsable--close");
   };
 
+  const classClose = isCollapsableClose ? "collapsable--close" : "";
+
   return (
-    <fieldset
-      className={`collapsable__${props.fieldset} collapsable ${classClose} js-collapsable`}
-    >
-      <legend
-        className="collapsable__header js-collapsable-header"
-        onClick={handleLegendClick}
-      >
+    <fieldset className={`collapsable__${fieldset} collapsable ${classClose}`}>
+      <legend className="collapsable__header" onClick={handleLegendClick}>
         <h2 className="tittle__collapsable">
-          <i
-            className={"fa fa-collapsable " + props.icon}
-            aria-hidden="true"
-          ></i>
-          {props.title}
+          <i className={"fa fa-collapsable " + icon} aria-hidden="true"></i>
+          {title}
         </h2>
         <i className="fa fa-angle-up" aria-hidden="true"></i>
       </legend>
-      <div
-        className={`collapsable__content collapsable__content--${props.fieldset}`}
-      >
+      <div className={`collapsable__content collapsable__content--${fieldset}`}>
         {props.children}
       </div>
     </fieldset>
@@ -44,21 +30,3 @@ function Collapsable(props) {
 }
 
 export default Collapsable;
-
-// let [isOpen, setOpen] = useState(true);
-//   let [classClose, setClass] = useState("");
-//   const handleLegendClick = () => {
-//     setOpen(!isOpen);
-//     setClass((classClose = isOpen ? "collapsable--close" : ""));
-//   };
-
-// CLOSE
-
-// let [isClose, setClose] = useState(true);
-//   let [classClose, setClassClose] = useState(
-//     isClose ? "collapsable--close" : ""
-//   );
-//   const handleLegendClick = () => {
-//     setClose(!isClose);
-//     setClassClose(isClose ? "collapsable--close" : "");
-//   };
