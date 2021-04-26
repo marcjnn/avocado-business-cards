@@ -108,25 +108,23 @@ function Form(props) {
         <Palette
           value="1"
           selectedPalette={palette}
-          changePalette={handleChangePalette}
+          handleChangePalette={handleChangePalette}
         />
         <Palette
           value="2"
           selectedPalette={palette}
-          changePalette={handleChangePalette}
+          handleChangePalette={handleChangePalette}
         />
         <Palette
           value="3"
           selectedPalette={palette}
-          changePalette={handleChangePalette}
+          handleChangePalette={handleChangePalette}
         />
         <Palette
           value="4"
           selectedPalette={palette}
-          changePalette={handleChangePalette}
-          color1={customColors.color1}
-          color2={customColors.color2}
-          color3={customColors.color3}
+          handleChangePalette={handleChangePalette}
+          customColors={customColors}
         />
         <CustomColors
           selectedPalette={palette}

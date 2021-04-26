@@ -1,32 +1,33 @@
 import "../style/layout/_design.scss";
 
 function Palette(props) {
+  const { value, selectedPalette, customColors, handleChangePalette } = props;
   return (
     <label className="display-block design__square-label">
       <input
         type="radio"
         name="palette"
         className="design__square-radio js_palette-select"
-        value={props.value}
-        onChange={props.changePalette}
-        checked={props.selectedPalette === props.value}
+        value={value}
+        onChange={handleChangePalette}
+        checked={selectedPalette === value}
       />
-      <ul className={`palette-${props.value}-election`}>
+      <ul className={`palette-${value}-election`}>
         <li
           className="design__square-color color-1"
-          style={{ backgroundColor: props.color1 }}
+          style={{ backgroundColor: customColors?.color1 }}
         >
           Color A
         </li>
         <li
           className="design__square-color color-2"
-          style={{ backgroundColor: props.color2 }}
+          style={{ backgroundColor: customColors?.color2 }}
         >
           Color B
         </li>
         <li
           className="design__square-color color-3"
-          style={{ backgroundColor: props.color3 }}
+          style={{ backgroundColor: customColors?.color3 }}
         >
           Color C
         </li>
